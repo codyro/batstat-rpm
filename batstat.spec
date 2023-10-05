@@ -27,7 +27,7 @@ BuildRequires: ncurses-devel
 
 %install
 mkdir -p %{buildroot}/usr/bin
-%make_install PREFIX=/usr
+%make_install PREFIX=%{_prefix}
 
 
 %check
