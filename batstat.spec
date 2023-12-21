@@ -1,5 +1,3 @@
-%define debug_package %{nil}
-
 Name:           batstat
 Version:        0^20230808gite107193
 Release:        %autorelease
@@ -22,7 +20,7 @@ BuildRequires: ncurses-devel
 
 
 %build
-%make_build
+%make_build CCFLAGS="%{optflags}"
 
 
 %install
