@@ -1,13 +1,15 @@
+%global commit      e107193e99fb8d461050358f05aa8343e2fd5bc9
+%global shortcommit %(c=%{commit}; echo ${c:0:7})
+
 Name:           batstat
-Version:        0^20230808gite107193
+Version:        0~^1.%{shortcommit}
 Release:        %autorelease
 Summary:        CLI battery status for Linux
 
 License:        None
 URL:            https://github.com/Juve45/%{name}
-Source0:        %{name}-0_20230808gite107193.tar.gz
+Source0:        %{url}/archive/%{commit}/%{name}-%{shortcommit}.tar.gz
 
-BuildRequires: gcc
 BuildRequires: gcc-c++
 BuildRequires: ncurses-devel
 
@@ -16,7 +18,7 @@ BuildRequires: ncurses-devel
 
 
 %prep
-%autosetup -n %{name}-0_20230808gite107193
+%autosetup -n %{name}-%{commit}
 
 
 %build
@@ -24,11 +26,8 @@ BuildRequires: ncurses-devel
 
 
 %install
-mkdir -p %{buildroot}/usr/bin
+mkdir -p %{buildroot}%{_bindir}
 %make_install PREFIX=%{_prefix}
-
-
-%check
 
 
 %files
@@ -37,6 +36,5 @@ mkdir -p %{buildroot}/usr/bin
 
 
 %changelog
-* Fri Sep 15 2023 Cody Robertson <cody@nerdymuffin.com> - 0^20230808gite107193-0
-- Initial package creation
+%autochangelog
 
